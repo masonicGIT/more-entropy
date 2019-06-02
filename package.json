@@ -2,10 +2,10 @@
   "name": "promised-entropy",
   "version": "0.0.8",
   "description": "Generate more entropy to combine with Node's crypto.rng or window.crypto",
-  "homepage": "https://github.com/keybase/entropy",
+  "homepage": "https://github.com/masonicGIT/promised-entropy",
   "repository": {
     "type": "git",
-    "url": "https://github.com/keybase/entropy.git"
+    "url": "https://github.com/masonicGIT/promised-entropy.git"
   },
   "devDependencies": {
     "iced-coffee-script": "^1.7.1-c"
