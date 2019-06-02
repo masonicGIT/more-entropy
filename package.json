@@ -1,5 +1,5 @@
 {
-  "name": "more-entropy",
+  "name": "promised-entropy",
   "version": "0.0.8",
   "description": "Generate more entropy to combine with Node's crypto.rng or window.crypto",
   "homepage": "https://github.com/keybase/entropy",
@@ -11,12 +11,13 @@
     "iced-coffee-script": "^1.7.1-c"
   },
   "dependencies": {
+    "bluebird": "^3.5.5",
     "iced-runtime": ">=0.0.1"
   },
   "directories": {
     "lib": "lib"
   },
-  "main": "lib/main.js",
+  "main": "index.js",
   "licenses": [
     {
       "type": "MIT",

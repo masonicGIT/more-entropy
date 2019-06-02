@@ -10,6 +10,8 @@ lib-cov
 *~
 *#
 
+.idea
+
 pids
 logs
 results
