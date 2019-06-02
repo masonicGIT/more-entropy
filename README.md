@@ -1,5 +1,9 @@
-more-entropy
+promised-entropy
 =======
+
+* A promisified adaptation of [more-entropy](https://github.com/keybase/more-entropy) *
+
+** Better entropy, I promise **
 
 The easiest way to generate good pseudorandom numbers in the browser is with `window.crypto.getRandomValues`, and in Node.js you can use `crypto.rng`.
 But for the truly paranoid, getting even more entropy is a good idea. For example, one might seed their own key generator with a combination
@@ -23,22 +27,20 @@ standard random number generators are compromised.
 ### Installation
 
 ```bash
-npm install more-entropy
+npm install --save promised-entropy
 ```
 
 ### Usage
 
 ```javascript
-var m = require('more-entropy');
+const m = require('promised-entropy')
 
 // create a generator, which can provide you with some entropy
-var c = new m.Generator();
+const c = new m.Generator()
 
 // get an array of integers with at least 100 bits of combined entropy:
-c.generate(100, function(vals) {
-  console.log(vals); // [-4358,543,9089,...]
-});
-
+let entropy = await c.generate(100)
+console.dir(entropy)  // [-4358,543,9089,...]
 ```
 
 ### What it's doing
