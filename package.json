@@ -16,9 +16,6 @@
   "directories": {
     "lib": "lib"
   },
-  "scripts": {
-    "make": "make"
-  },
   "main": "lib/main.js",
   "licenses": [
     {
