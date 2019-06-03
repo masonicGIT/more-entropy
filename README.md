@@ -1,9 +1,9 @@
 promised-entropy
 =======
 
-* A promisified adaptation of [more-entropy](https://github.com/keybase/more-entropy) *
+__A promisified adaptation of [more-entropy](https://github.com/keybase/more-entropy)__
 
-** Better entropy, I promise **
+_Better entropy, I promise_
 
 The easiest way to generate good pseudorandom numbers in the browser is with `window.crypto.getRandomValues`, and in Node.js you can use `crypto.rng`.
 But for the truly paranoid, getting even more entropy is a good idea. For example, one might seed their own key generator with a combination
