@@ -36,12 +36,34 @@ npm install --save promised-entropy
 const m = require('promised-entropy')
 
 // create a generator, which can provide you with some entropy
-const c = new m.Generator()
+entropy = await m.promisedEntropy(bits)
 
-// get an array of integers with at least 100 bits of combined entropy:
-let entropy = await c.generate(100)
+// get an array of integers with at least 256 bits of combined entropy:
+let entropy = await m.promisedEntropy(256)
 console.dir(entropy)  // [-4358,543,9089,...]
 ```
+
+Promised entropy can also be called with custom options
+
+
+```javascript
+const m = require('promised-entropy')
+
+const params = {
+  'loop_delay':        10 // how many milliseconds to pause between each operation loop. A lower value will generate entropy faster, but will also be harder on the CPU
+  'work_min':           1 // milliseconds per loop; a higher value blocks the CPU more, so 1 is recommended
+  'auto_stop_bits':  4096 // the generator prepares entropy for you before you request it; if it reaches this much unclaimed entropy it will stop working
+  'max_bits_per_delta': 4 // a safety cap on how much entropy it can claim per value; 4 (default) is very conservative. a larger value will allow faster entropy generation
+};
+
+// create a generator, which can provide you with some entropy
+entropy = await m.promisedEntropy(bits, params)
+
+// get an array of integers with at least 256 bits of combined entropy:
+let entropy = await m.promisedEntropy(256, params)
+console.dir(entropy)  // [-4358,543,9089,...]
+```
+
 
 ### What it's doing
 
@@ -62,16 +84,3 @@ Much like the mouse movement technique, we are collecting a lot of data and assu
 ### One Big Assumption
 
  * your CPU is not shared with an attacker; a carefully timed attack on the CPU could produce entropy less than what's requested
-
-### Options
-
-`new m.Generator()` can be called with extra options:
-
-```javascript
-var c = new m.Generator({
-  'loop_delay':        10 // how many milliseconds to pause between each operation loop. A lower value will generate entropy faster, but will also be harder on the CPU
-  'work_min':           1 // milliseconds per loop; a higher value blocks the CPU more, so 1 is recommended
-  'auto_stop_bits':  4096 // the generator prepares entropy for you before you request it; if it reaches this much unclaimed entropy it will stop working
-  'max_bits_per_delta': 4 // a safety cap on how much entropy it can claim per value; 4 (default) is very conservative. a larger value will allow faster entropy generation
-});
-```
