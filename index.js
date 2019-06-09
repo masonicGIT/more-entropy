@@ -1,11 +1,12 @@
 const Promise = require('bluebird');
-const entropy = Promise.promisifyAll(require('./lib/generator.js'));
+const entropy = Promise.promisifyAll(require('./src/generator.js'));
 
-exports.promisedEntropy = async (bits) => {
+exports.promisedEntropy = async (bits, params) => {
   if (!bits) {
     throw new Error('Please specify how many bits of combined entropy you would like')
   }
-  const generate = new entropy.Generator({})
+
+  const generate = new entropy.Generator(params || {})
 
   // Pull requests for better solutions accepted
   try {
